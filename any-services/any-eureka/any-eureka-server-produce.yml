@@ -1,5 +1,5 @@
 server:
-  port: 7061
+  port: 8761
 
 spring:
   application:
@@ -16,7 +16,7 @@ eureka:
     register-with-eureka: true #自己也注册到注册中心
     fetch-registry: false #需要从其他eureka节点获取注册信息
     service-url:
-      default-zone: http://127.0.0.1:7061/eureka #设置与eureka交互的地址
+      default-zone: http://127.0.0.1:8761/eureka #设置与eureka交互的地址
   instance:
     hostname: 127.0.0.1
     prefer-ip-address: true
