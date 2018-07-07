@@ -9,7 +9,7 @@ eureka:
     health-check-url-path: /actuator/health
   client:
     service-url:
-      defaultZone: http://127.0.0.1:7061/eureka
+      defaultZone: http://127.0.0.1:8761/eureka
     registry-fetch-interval-seconds: 10  #重新刷新服务地址的时间
 
 management:
