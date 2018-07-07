@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: roses-auth
+    name: any-auth
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/roses_sys?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
     username: root
@@ -22,7 +22,7 @@ eureka:
   client:
     registry-fetch-interval-seconds: 10  #重新刷新服务地址的时间
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      defaultZone: http://127.0.0.1:7061/eureka
 
 management:
   endpoints:
