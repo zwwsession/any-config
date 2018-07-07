@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 20   #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除(默认90秒)
+    lease-renewal-interval-in-seconds: 5       #服务刷新时间配置，每隔这个时间会主动心跳一次(默认30秒)
+    health-check-url-path: /actuator/health
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    registry-fetch-interval-seconds: 10  #重新刷新服务地址的时间
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
