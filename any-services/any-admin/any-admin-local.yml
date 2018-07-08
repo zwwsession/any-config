@@ -30,6 +30,7 @@ redis:
   cache:
     expiration: 3601
 mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
   typeAliasesPackage: com.zww.tnt.any.*.model.*
 
 eureka:
