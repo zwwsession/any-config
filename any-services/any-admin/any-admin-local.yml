@@ -13,8 +13,8 @@ spring:
     username: zww
     password: 1.Session
 
-mybatis-plus:
-  typeAliasesPackage: com.zww.tnt.any.*.model
+# mybatis-plus:
+#  typeAliasesPackage: com.zww.tnt.any.*.model
 
 eureka:
   instance:
