@@ -1,0 +1,92 @@
+eureka:
+  server:
+    #是否开启自我保护（运行期间spring会统计信条失败的比例在15分钟之内是否低于85%，如果不低于85%，Eureka会将实例注册信息保护起来，让这些实例不会过期）
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 3000      #3秒钟自动剔除失效的节点
+    response-cache-update-interval-ms: 3000  #eureka server刷新readCacheMap的时间
+                                             #注意，client读取的是readCacheMap，这个时间决定了多久会把readWriteCacheMap的缓存更新到readCacheMap上
+  client:
+    register-with-eureka: true #自己也注册到注册中心
+    fetch-registry: false #需要从其他eureka节点获取注册信息
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka #设置与eureka交互的地址
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+
+server:
+  tomcat:
+    max-threads: 500 # Maximum amount of worker threads.
+    min-spare-threads: 50 # Minimum amount of worker threads
+
+spring:
+  redis:
+    remote: false        #cachecloud 获取
+    host: 140.143.21.138
+    port: 6999
+    password:
+  rabbitmq:
+    host: 140.143.21.138
+    port: 5672
+    username: admin
+    password: 1.session
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+redis:
+  cache:
+    expiration: 3601
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: any-auth,any-admin
+  Httpclient:
+    enabled: false
+  OkHttp:
+    enabled: true
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+#监控短点配置
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false

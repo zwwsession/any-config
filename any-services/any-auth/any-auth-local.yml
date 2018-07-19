@@ -1,18 +1,18 @@
 server:
-  port: 8001
+  port: 9002
 
 spring:
   application:
     name: any-auth
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/roses_sys?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: root
+    url: jdbc:mysql://140.143.21.138:3306/any?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: zww
+    password: 1.Session
 
 auth:
   default-pwd: 123456 #重置密码的默认密码
 mybatis-plus:
-  typeAliasesPackage: com.stylefeng.roses.auth.modular.entity
+  typeAliasesPackage: com.zww.tnt.any.*.model
 
 eureka:
   instance:
@@ -22,13 +22,17 @@ eureka:
   client:
     registry-fetch-interval-seconds: 10  #重新刷新服务地址的时间
     service-url:
-      defaultZone: http://127.0.0.1:7061/eureka
+      defaultZone: http://127.0.0.1:8761/eureka
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: ALWAYS
+ignore:
+  urls:
+    - /authentication/**
+    - /**/*.css
+    - /social
+    - /signin
+    - /signup
+    - /info
+    - /health
+    - /metrics/**
+    - /loggers/**
+    - /mobile/token
