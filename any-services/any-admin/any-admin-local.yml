@@ -12,9 +12,26 @@ spring:
     url: jdbc:mysql://140.143.21.138:3306/any?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
     username: zww
     password: 1.Session
-
+  redis:
+    remote: false        #cachecloud 获取
+    host: 140.143.21.138
+    port: 6999
+    password:
+  rabbitmq:
+    host: 140.143.21.138
+    port: 5672
+    username: admin
+    password: 1.session
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+redis:
+  cache:
+    expiration: 3601
 mybatis-plus:
-  typeAliasesPackage: com.zww.tnt.any.*.model
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.zww.tnt.any.*.model.*
 
 eureka:
   instance:
